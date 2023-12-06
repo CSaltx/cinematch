@@ -1,9 +1,11 @@
-import os
-import time
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
 
 # Set the API key from the environment variable
-client = OpenAI(api_key='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')
+load_dotenv('/path/to/your/.env')
+key = os.getenv('API_KEY')
+client = OpenAI(api_key=key)
 
 def generate_new_line(message):
     return [{
