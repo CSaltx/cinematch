@@ -1,0 +1,171 @@
+/* App.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default light theme colors */
+  --background-color: #f9f9f9;
+  --text-color: #333;
+  --input-background-color: #fff;
+  --input-border-color: #007bff;
+  --message-background-color: #007bff;
+  --message-text-color: white;
+}
+
+body.dark-mode {
+  /* Dark theme colors */
+  --background-color: #121212;
+  --text-color: #fff;
+  --input-background-color: #333;
+  --input-border-color: #555;
+  --message-background-color: #555;
+  --message-text-color: #ddd;
+}
+
+/* Overall background and text color */
+body {
+  background-color: #121212;
+  color: #ffffff;
+}
+.chat-container {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  /* ... other styles ... */
+}
+
+.rce-input input {
+  background-color: var(--input-background-color);
+  border-color: var(--input-border-color);
+  /* ... other styles ... */
+}
+
+.message-content {
+  background-color: var(--message-background-color);
+  color: var(--message-text-color);
+  /* ... other styles ... */
+}
+.messages-container {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Specific targeting of the ::after element in MessageBox */
+.rce-container-mbox .rce-mbox-text::after {
+  content: none !important; /* Use !important to ensure override */
+}
+
+.cs-message-list .cs-message {
+  margin-bottom: 10vh;
+}
+
+.typing {
+  width: 5em;
+  height: 2em;
+  position: relative;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  background: white;
+  border-radius: 20px;
+}
+
+.typing__dot {
+  float: left;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  background: #8d8c91;
+  border-radius: 50%;
+  opacity: 0;
+  animation: loadingFade 1s infinite;
+}
+
+.typing__dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing__dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing__dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loadingFade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Chat container styling */
+.chat-container {
+  height: 100vh;
+  color: white;
+  background-color: #121212; /* Background color for the chat container */
+}
+
+/* Header at the top of the chat */
+.conversation-header {
+  background-color: #2c2f33; /* Slightly lighter grey for the header */
+  color: white; /* White text color */
+}
+
+/* Message list container */
+.message-list-container {
+  background-color: #121212; /* Same as the overall background */
+  color: white; /* White text color */
+  flex-grow: 1;
+  padding: 1rem; /* Adds some spacing around messages */
+}
+
+/* Individual messages */
+.cs-message {
+  margin-bottom: 0.5rem; /* Adds spacing between messages */
+}
+
+.cs-message.cs-message-incoming .cs-message-bubble {
+  background-color: #262626; /* Dark grey for incoming messages */
+  color: white; /* White text color */
+}
+
+.cs-message.cs-message-outgoing .cs-message-bubble {
+  background-color: #333; /* Slightly lighter grey for outgoing messages */
+  color: white; /* White text color */
+}
+
+/* Message input styling */
+.message-input {
+  background-color: #2c2f33; /* Slightly lighter grey for the input */
+  border: none; /* Removes border */
+}
+
+/* Placeholder text color in the message input */
+.message-input::placeholder {
+  color: #b9bbbe; /* Light grey color for placeholder text */
+}
+
+/* Loader or typing indicator styling */
+.cs-loader {
+  color: white; /* White color for loader */
+}
+
+.loader-white svg {
+  fill: white !important; /* Override any SVG fill color to white */
+}
+
+/* Ensure the MessageInput sticks to the bottom */
+.chat-container .cs-message-input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

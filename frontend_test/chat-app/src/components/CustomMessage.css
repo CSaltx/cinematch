@@ -1,0 +1,35 @@
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  align-items: flex-end; /* Right-align messages */
+}
+
+.message.left {
+  align-items: flex-start; /* Left-align for incoming messages, if needed */
+}
+
+.user-message .message-content {
+  background-color: #007bff; /* User message color */
+  color: white;
+}
+
+.bot-message .message-content {
+  background-color: #d2d2d2; /* Chatbot message color */
+  color: #454545;
+}
+
+.message-content {
+  background-color: #007bff; /* Background color of the message bubble */
+  color: white; /* Text color */
+  padding: 8px 12px;
+  border-radius: 15px;
+  max-width: 70%;
+  word-break: break-word;
+}
+
+.message-date {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 4px;
+}
