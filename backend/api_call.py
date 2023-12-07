@@ -15,7 +15,7 @@ def generate_new_line(message):
 
 def develop_response(script, message):
     response = client.chat.completions.create(
-        model="gpt-4", # can be gpt-4 for project submission
+        model="gpt-3.5-turbo", # can be gpt-4 for project submission
         messages=[{
             "role": "system",
             "content": """
