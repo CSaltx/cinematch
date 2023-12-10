@@ -2,11 +2,9 @@ from openai import OpenAI
 # from dotenv import load_dotenv
 import os
 
-api_key = os.getenv('OPENAI_API_KEY')
-if not api_key:
-    print('failure...')
-    exit(1)
-client = OpenAI(api_key=api_key)
+
+OpenAI_KEY = os.getenv('API_KEY')
+client = OpenAI(api_key={OpenAI_KEY})
 
 def generate_new_line(message):
     return [{
