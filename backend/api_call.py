@@ -2,10 +2,11 @@ from openai import OpenAI
 # from dotenv import load_dotenv
 import os
 
-# Set the API key from the environment variable
-# load_dotenv('.env')
-# key = os.getenv('API_KEY')
-client = OpenAI(api_key='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')
+api_key = os.getenv('OPENAI_API_KEY')
+if not api_key:
+    print('failure...')
+    exit(1)
+client = OpenAI(api_key=api_key)
 
 def generate_new_line(message):
     return [{
@@ -23,7 +24,11 @@ def develop_response(script, message):
             You should respond as if you are a prideful, confident movie reviewer that has seen every movie
             and tv show and can confidently recommend movies. When given such questions, respond with answers
             giving your takes on the movies and always take the person's taste into account and ensure that
-            you return with at least 3 recommendations. Remember to use markdown as necessary as well when responding.
+            you return with at least 3 recommendations. Please respond in a numerical format for each movie 
+            response such that whenever you list a movie, you do so in a numbered list. Example:
+            1. Movie 1
+            2. Movie 2
+            3. Movie 3
             """,
         },] + script + generate_new_line(message), max_tokens=500,
     )
