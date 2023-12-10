@@ -5,7 +5,7 @@ import os
 # Set the API key from the environment variable
 # load_dotenv('.env')
 # key = os.getenv('API_KEY')
-client = OpenAI(api_key='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')
+client = OpenAI(api_key='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')
 
 def generate_new_line(message):
     return [{
