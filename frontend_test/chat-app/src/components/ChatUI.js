@@ -6,6 +6,7 @@ import "./ChatComponent.css";
 import ApiNotFound from "./ApiNotFound.js";
 import TypingInd from "./TypingIndicator.js";
 import "./ChatComponent.css";
+import LoadingSpinner from "./LoadingSpinner";
 
 const ChatComponent = () => {
   const [messages, setMessages] = useState([]);
@@ -21,18 +22,24 @@ const ChatComponent = () => {
           "Content-Type": "Application/json",
         },
       })
-        .then((response) => response.json())
+        .then((response) => {
+          console.log(response)
+          return response.json()
+        })
         .then((data) => {
-          console.log(data);
+          console.log(data.status);
           if (data.status === "up") {
             setAlive(true);
+            setIsLoading(false);
           } else {
+            setIsLoading(true);
             setAlive(false);
           }
         })
         .catch((error) => {
           console.error("API check failed", error);
           setAlive(false);
+          setIsLoading(false);
         });
     };
 
@@ -94,6 +101,7 @@ const ChatComponent = () => {
     }
   };
 
+
   return (
     <div className="chat-container">
       {alive ? (
@@ -108,6 +116,9 @@ const ChatComponent = () => {
                 isUserMessage={msg.position === "right"}
               />
             ))}
+          </div>
+          <div className="App">
+            {isLoading && <LoadingSpinner /> }
           </div>
           <Input
             placeholder="Type here..."
