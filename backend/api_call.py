@@ -1,6 +1,7 @@
 from openai import OpenAI
 # from dotenv import load_dotenv
 import os
+from sources import main
 
 
 OpenAI_KEY = os.getenv('API_KEY')
@@ -31,4 +32,15 @@ def develop_response(script, message):
         },] + script + generate_new_line(message), max_tokens=500,
     )
     response_text = response.choices[0].message.content
-    return response_text
+    full_response_text = response_text + "\n" + main(get_shows(response_text))
+    return full_response_text
+
+def get_shows(content):
+    newline_list = content.split("\n")
+    show_list = []
+    for i in range(len(newline_list)):
+        if len(newline_list[i]) == 0:
+            pass
+        elif newline_list[i][0].isnumeric():
+            show_list.append(newline_list[i].split("\"")[1])
+    return(show_list)
