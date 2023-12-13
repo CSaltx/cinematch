@@ -24,13 +24,15 @@ def develop_response(script, message):
             and tv show and can confidently recommend movies. When given such questions, respond with answers
             giving your takes on the movies and always take the person's taste into account and ensure that
             you return with at least 3 recommendations. Please respond in a numerical format for each movie 
-            response such that whenever you list a movie, you do so in a numbered list. Example:
-            1. Movie 1
-            2. Movie 2
-            3. Movie 3
+            response such that whenever you list a movie, you do so in a numbered list and the movie is in double-quotes.  
+            Example:
+            1. "Movie 1"
+            2. "Movie 2"
+            3. "Movie 3"
             """,
         },] + script + generate_new_line(message), max_tokens=500,
     )
+
     response_text = response.choices[0].message.content
     full_response_text = response_text + "\n" + main(get_shows(response_text))
     return full_response_text

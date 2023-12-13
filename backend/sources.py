@@ -50,28 +50,42 @@ class WatchMode():
                 self.id = id
             else:
                 raise IOError
-            global chat_response
-            chat_response = self.getSources(search_input, id)
+            # global long_chat_response
+            # long_chat_response = self.getSources(search_input, id)
+            global short_chat_response
+            short_chat_response = self.getSources(search_input, id)
 
         def getSources(self, search_input, id):
             source_url = "https://api.watchmode.com/v1/title/"+id+"/sources/?apiKey="+api_key
             response = requests.get(source_url, headers)
             source_results = response.json()
-            chat_response = search_input + ": \n"
+            # long_chat_response = search_input + ": \n"
+            source_list = []
             for result in source_results:
-                chat_response += "\t" + result['name'] + ": " + result['web_url'] + "\n"
-            print(chat_response)
-            return chat_response
+                # long_chat_response += "\t" + result['name'] + ": " + result['web_url'] + "\n"
+                if result['name'] not in source_list: source_list.append(result['name'])
+            # print(long_chat_response)
+            # return long_chat_response
+            short_chat_response = "\nWatch \"" + search_input + "\" on "
+            for i in range(len(source_list)):
+                if i == len(source_list)-1:
+                    short_chat_response = short_chat_response + "and " + source_list[i] + "."
+                else:
+                    short_chat_response = short_chat_response + source_list[i] + ", "
+            return short_chat_response
 
 def main(search_input):
     if search_input is not None and type(search_input) == list:
-        full_chat = ""
+        # full_chat = ""
+        full_short_response = ""
         for i in search_input:
             WatchMode(i)
-            full_chat = full_chat + chat_response
+            # full_chat = full_chat + long_chat_response
+            full_short_response = full_short_response + short_chat_response
     else:
         raise IOError
-    return full_chat
+    print(full_short_response)
+    return full_short_response
 
 if __name__ == "__main__":
     # I am inputting example TV Shows
