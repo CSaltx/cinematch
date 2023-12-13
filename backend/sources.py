@@ -1,4 +1,3 @@
-import json
 import requests
 
 api_key = "aDtCNQDaFSnQlFjOQFlmd78WGQLCJ4x0214L1I4o"
