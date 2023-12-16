@@ -2,8 +2,6 @@
 
 ## Table of Contents
 
-- [Cinematch Install Guide](#cinematch-install-guide)
-  - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
