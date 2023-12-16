@@ -1,6 +1,9 @@
 # Cinematch Install Guide
 
 ## Table of Contents
+
+- [Cinematch Install Guide](#cinematch-install-guide)
+  - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -45,7 +48,7 @@ To install Cinematch:
      ```
    - For the frontend:
      ```bash
-     cd frontend
+     cd frontend/chat-app/
      npm install
      ```
 
@@ -73,7 +76,7 @@ Cinematch consists of an API and a web platform.
      ```
 2. To run the web platform:
    - Open a new terminal window.
-   - Navigate to the frontend folder:
+   - Navigate to the frontend/chat-app folder:
      ```bash
      npm start
      ```
