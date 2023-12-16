@@ -58,7 +58,7 @@ To set up the project:
 2. Open the **key.pdf** file.
 3. Insert the API key into the `.env` file:
    ```bash
-   API_KEY="YOUR-API-KEY"
+   OPENAI_API_KEY="YOUR-API-KEY"
    ```
 
 > **NOTE**: This is to ensure that the API Key will not be parsed by OpenAI's crawler and remove the usage of the key. It also allows for the key to be removed from the repo fairly easily for production build if desired with an environment file for safety. Normally, it would be done like this but as this is being submitted, the API key is needed for submission. However, if this was a production build, the key would be stored via an API or only stored locally and NEVER in the github repo for security.
