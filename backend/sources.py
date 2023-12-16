@@ -3,6 +3,11 @@ import requests
 api_key = "aDtCNQDaFSnQlFjOQFlmd78WGQLCJ4x0214L1I4o"
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'} # This is chrome, you can set whatever browser you like
 
+# Chose to use nested class definitions because the process of getting a movie's/tv-show's ID is different from the process of getting its sources to watch.
+# With the ID, much more information could be accessed via the API, with its sources just being the information I chose to access. 
+# There are potential additions to the code to get more information from the API. To do this would require additional functions all using the ID. 
+# For this reason, I chose to separate the process of obtaining the ID from obtaining the media specific infomrmation. 
+
 class WatchMode():
     def __init__ (self, search_input):
         if search_input is not None:
