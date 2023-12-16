@@ -1,11 +1,9 @@
 from openai import OpenAI
-# from dotenv import load_dotenv
-import os
 from sources import main
+from dotenv import load_dotenv
 
-
-OpenAI_KEY = os.getenv('API_KEY')
-client = OpenAI(api_key={OpenAI_KEY})
+load_dotenv()
+client = OpenAI()
 
 def generate_new_line(message):
     return [{
